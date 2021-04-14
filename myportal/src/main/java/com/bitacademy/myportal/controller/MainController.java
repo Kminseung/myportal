@@ -1,4 +1,4 @@
-package com.bitacademy.myportal.controllers;
+package com.bitacademy.myportal.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
