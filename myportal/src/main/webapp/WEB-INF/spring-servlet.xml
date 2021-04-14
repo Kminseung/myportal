@@ -26,4 +26,8 @@
 		<!-- ViewResolver는 여러 개 등록될 수 있고 우선순위 지정 가능 -->
 		<property name="order" value="1" />
 	</bean>
+	
+	<!--  스프링은 기본적으로 모든 요청을 DispatchServlet이 처리, 정적 자원 제공을 위해서는 정적 자원의 처리를 DefaultServlet에게 위임해야 함 -->
+	<mvc:annotation-driven />
+	<mvc:default-servlet-handler />		<!-- 정적 자원 처리 담당 -->
 </beans>
