@@ -32,9 +32,10 @@
 	</bean>
 	
 	<!-- MyBatis SqlSessionFactoryBean 등록-->
-	<bean id="sqlSeesionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="oracleDataSource" />
-		<property name="configuration" value="classpath:mybatis/configuration.xml"></property>
+		<!-- 설정 파일 -->
+		<property name="configLocation" value="classpath:mybatis/configuration.xml"></property>
 	</bean>
 	
 	<!-- MyBatis SqlSessionTemplate 등록 -->
