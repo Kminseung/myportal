@@ -20,8 +20,7 @@
 				<div id="site-introduction">
   
 				<h1>방명록</h1>
-				<form action="" 
-						method="POST">
+				<form action="<c:url value="/guestbook/write" />" method="POST">
 				<table border=1 width=500>
 					<tr>
 						<td>이름</td><td><input type="text" name="name"></td>
@@ -46,9 +45,7 @@
 						<td>${ vo.regDate }</td>
 						<td>
 							<!-- 수정 -->
-							<a href="">
-								삭제
-							</a>
+							<a href="<c:url value="/guestbook/delete/${vo.no}" />">삭제</a>
 						</td>
 					</tr>
 					<tr>
