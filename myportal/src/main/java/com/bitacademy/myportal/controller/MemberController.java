@@ -3,6 +3,8 @@ package com.bitacademy.myportal.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -71,4 +73,25 @@ public class MemberController {
 		return map;
 	}
 	
+	// 로그인 폼 처리
+	@RequestMapping(value="/login", method=RequestMethod.GET)
+	public String loginForm() {
+		return "users/loginform";
+	}
+	
+	// 로그인 처리
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public String loginAction(@RequestParam String email, @RequestParam String password, HttpSession session) {	// 사용자 저장을 위한 세션 객체
+		MemberVo authUser = memberService.getUser(email, password);
+		
+		// 만약 로그인 유저가 없다면 login 폼으로 돌려보냄
+		if(authUser != null) {
+			session.setAttribute("authUser", authUser);
+			// 홈페이지로 리다이렉트
+			return "redirect:/";
+		} else {
+			// 로그인 실패
+			return "redirect:/members/login";
+		}
+	}
 }
