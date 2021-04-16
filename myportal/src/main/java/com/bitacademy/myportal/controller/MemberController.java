@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,6 +21,8 @@ import com.bitacademy.myportal.vo.MemberVo;
 @Controller
 @RequestMapping("/members")
 public class MemberController {
+	// logger
+	private static Logger logger = LoggerFactory.getLogger(MemberController.class);
 	// 서비스 연결
 	@Autowired
 	private MemberService memberService;
@@ -31,15 +35,16 @@ public class MemberController {
 	// 가입 처리
 	@RequestMapping(value="/join", method=RequestMethod.POST)
 	public String joinAction(@ModelAttribute MemberVo memberVo) {
-		System.out.println("Form 전송된 데이터: " + memberVo);
+		logger.debug("Form 전송된 데이터: " + memberVo);
+
 		
 		boolean success = memberService.join(memberVo);
 		
 		if(success) {	// insert 성공
-			System.out.println("가입 성공!");
+			logger.debug("가입 성공!");
 			return "redirect:/members/joinsuccess";
 		} else {
-			System.err.println("가입 실패!");
+			logger.debug("가입 실패!");
 			return "redirect:/members/";		// 가입 폼으로 돌려보냄
 		}
 	}

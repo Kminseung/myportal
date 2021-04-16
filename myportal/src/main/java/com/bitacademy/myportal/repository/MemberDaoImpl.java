@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +14,9 @@ import com.bitacademy.myportal.vo.MemberVo;
 
 @Repository("memberDao")
 public class MemberDaoImpl implements MemberDao {
+	// logger
+	private static Logger logger = LoggerFactory.getLogger(MemberDaoImpl.class);
+		
 	@Autowired
 	private SqlSession sqlSession;
 	
@@ -23,7 +28,8 @@ public class MemberDaoImpl implements MemberDao {
 			insertedCount = sqlSession.insert("members.insert", vo);
 		} catch(Exception e) {
 			// 예외 전환 및 로그 출력
-			System.err.println("예외 발생: " + e.getMessage());
+//			System.err.println("예외 발생: " + e.getMessage());
+			logger.error("예외 발생: " + e.getMessage());
 			throw new MemberDaoException("회원 가입 중 문제 발생", vo);
 		}
 		return insertedCount;
