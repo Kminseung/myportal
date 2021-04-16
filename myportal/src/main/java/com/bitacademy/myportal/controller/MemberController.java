@@ -42,4 +42,8 @@ public class MemberController {
 	public String joinSuccess() {
 		return "users/joinsuccess";
 	}
+	
+	// 이메일 중복 체크
+	//@RequestMapping("/emailcheck")
+	
 }
