@@ -34,7 +34,7 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public MemberVo selectUser(String email) {
-		MemberVo vo = sqlSession.selectOne("members.selectUserByEmail");
+		MemberVo vo = sqlSession.selectOne("members.selectUserByEmail", email);
 		return vo;
 	}
 
