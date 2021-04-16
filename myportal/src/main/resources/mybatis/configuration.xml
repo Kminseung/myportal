@@ -6,8 +6,12 @@
 <!-- MyBatis 설정 -->
 <configuration>
 	<!-- parameterType, resultType에서 사용하는 객체 별칭을 지어줄 수 있음 -->
-	<typeAliases>
+	<!-- <typeAliases>
 		<typeAlias alias="guestbookVo" type="com.bitacademy.myportal.vo.GuestbookVo"/>
+	</typeAliases> -->
+	
+	<typeAliases>
+		<typeAlias alias="memberVo" type="com.bitacademy.myportal.vo.MemberVo"/>
 	</typeAliases>
 	
 	<mappers>
