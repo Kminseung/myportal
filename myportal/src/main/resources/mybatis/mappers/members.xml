@@ -7,7 +7,7 @@
 	<insert id="insert" parameterType="memberVo">
 		<![CDATA[
 			INSERT INTO members(no, name, email, password, gender)
-			VALUES(seq_members_pk.nextval, #{name}, #{email}, #{password}, #gender})
+			VALUES(seq_members_pk.nextval, #{name}, #{email}, #{password}, #{gender})
 		]]>
 	</insert>
 </mapper>

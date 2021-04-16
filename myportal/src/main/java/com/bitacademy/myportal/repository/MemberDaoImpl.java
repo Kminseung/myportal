@@ -23,7 +23,7 @@ public class MemberDaoImpl implements MemberDao {
 			System.err.println("예외 발생: " + e.getMessage());
 			throw new MemberDaoException("회원 가입 중 문제 발생", vo);
 		}
-		return 0;
+		return insertedCount;
 	}
 
 	@Override
