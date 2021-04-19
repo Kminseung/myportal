@@ -48,16 +48,23 @@
 	<!-- Interceptors -->
 	<mvc:interceptors>
 		<!-- 여러개 등록 가능, 순서대로 적용 -->
-		<mvc:interceptor>
-			<!-- /board 하위 모든 url에 인터셉터 실행 -->
+		<!-- mvc:interceptor>
 			<mvc:mapping path="/board/**"/>
 			<bean class="com.bitacademy.myportal.interceptors.MyInterceptor" />
 		</mvc:interceptor>
 		
 		<mvc:interceptor>
-			<!-- /board 하위 모든 url에 인터셉터 실행 -->
 			<mvc:mapping path="/board/**"/>
 			<bean class="com.bitacademy.myportal.interceptors.MyInterceptor2" />
+		</mvc:interceptor-->
+		<!-- 인증 처리 : 인터셉터 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/board/**"/>
+			<!-- 아래 매핑은 인터셉터 적용에서 제외 -->
+			<mvc:exclude-mapping path="/board/list/**"/>
+			<mvc:exclude-mapping path="/board/"/>
+			<mvc:exclude-mapping path="/board"/>
+			<bean class="com.bitacademy.myportal.interceptors.AuthInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 </beans>
