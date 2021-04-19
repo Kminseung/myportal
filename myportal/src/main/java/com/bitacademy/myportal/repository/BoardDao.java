@@ -8,5 +8,5 @@ public interface BoardDao {
 	public List<BoardVo> selectAll();		// 게시물 목록 조회
 	public int insert(BoardVo vo);			// 게시물 추가
 	public BoardVo getContent(Long no);		// 게시물 조회
-	public int ipdate(BoardVo vo);			// 게시물 수정
+	public int update(BoardVo vo);			// 게시물 수정
 }
