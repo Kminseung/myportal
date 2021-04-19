@@ -44,4 +44,20 @@
 		<!-- ViewResolver는 여러 개 등록될 수 있고 우선순위 지정 가능 -->
 		<property name="order" value="1" />
 	</bean>
+	
+	<!-- Interceptors -->
+	<mvc:interceptors>
+		<!-- 여러개 등록 가능, 순서대로 적용 -->
+		<mvc:interceptor>
+			<!-- /board 하위 모든 url에 인터셉터 실행 -->
+			<mvc:mapping path="/board/**"/>
+			<bean class="com.bitacademy.myportal.interceptors.MyInterceptor" />
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<!-- /board 하위 모든 url에 인터셉터 실행 -->
+			<mvc:mapping path="/board/**"/>
+			<bean class="com.bitacademy.myportal.interceptors.MyInterceptor2" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>
