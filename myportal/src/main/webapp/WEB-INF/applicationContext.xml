@@ -19,27 +19,35 @@
 		<context:include-filter 
 			type="annotation" 
 			expression="org.springframework.stereotype.Repository"/>
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+		<context:include-filter 
+			type="annotation" 
+			expression="org.springframework.stereotype.Component"/>
 	</context:component-scan>
-
+	
 	<!-- Oracle Data Source -->
-	<bean id="oracleDataSource" class="oracle.jdbc.pool.OracleDataSource" destroy-method="close">
-		<property name="URL" value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<property name="user" value="C##KMS" />
+	<bean id="oracleDataSource"
+		class="oracle.jdbc.pool.OracleDataSource"
+		destroy-method="close">
+		<property name="URL"
+			value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="user" value="C##KMS" />	
 		<property name="password" value="7777" />
-		<property name="connectionCachingEnabled" value="true" />
+		<property name="connectionCachingEnabled" 
+			value="true" />
 		<qualifier value="main-db" />
 	</bean>
 	
-	<!-- MyBatis SqlSessionFactoryBean 등록-->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="oracleDataSource" />
+	<!-- MyBatis SqlSessionFactoryBean 등록 -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource"	ref="oracleDataSource" />
 		<!-- 설정 파일 -->
-		<property name="configLocation" value="classpath:mybatis/configuration.xml"></property>
+		<property name="configLocation" value="classpath:mybatis/configuration.xml" />
 	</bean>
 	
 	<!-- MyBatis SqlSessionTemplate 등록 -->
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
 </beans>
